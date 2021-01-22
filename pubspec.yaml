@@ -63,6 +63,9 @@ flutter:
         - family: SourceSansPro
           fonts:
               - asset: assets/fonts/SourceSansPro-Regular.ttf
+                weight: 400
+              - asset: assets/fonts/SourceSansPro-SemiBold.ttf
+                weight: 600
     #       - asset: fonts/Schyler-Italic.ttf
     #         style: italic
     #   - family: Trajan Pro

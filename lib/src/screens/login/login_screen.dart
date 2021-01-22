@@ -1,4 +1,5 @@
 import 'package:erp_school/src/styles/app_color.dart';
+import 'package:erp_school/src/styles/app_text_style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -10,34 +11,55 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [AppColor.primaryLight, AppColor.primary]),
-      ),
-      child: Column(
-        children: [
-          Stack(
-            alignment: Alignment.bottomLeft,
-            children: [
-              Container(
-                height: MediaQuery.of(context).size.height * 0.4,
-                child: Image.asset("assets/images/splash.png"),
-              )
-            ],
-          ),
-          Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(12),
-                      topLeft: Radius.circular(12))),
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [AppColor.primaryLight, AppColor.primary]),
+        ),
+        child: Column(
+          children: [
+            Stack(
+              alignment: Alignment.bottomLeft,
+              children: [
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.4,
+                  child: Image.asset("assets/images/splash.png"),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    children: [
+                      Text(
+                        "Hi Student",
+                        style: AppTextStyle.style(
+                            fontSize: 34, fontWeight: FontWeight.w600),
+                      ),
+                      Text(
+                        "Sign in to Continue",
+                        style: AppTextStyle.style(
+                            fontSize: 20,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w300),
+                      )
+                    ],
+                  ),
+                )
+              ],
             ),
-          )
-        ],
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(35),
+                        topLeft: Radius.circular(35))),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
