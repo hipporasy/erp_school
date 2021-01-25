@@ -9,6 +9,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  bool _isSecure = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         "Sign in to Continue",
                         style: AppTextStyle.style(
                             fontSize: 20,
-                            color: Colors.white,
+                            color: Colors.white.withOpacity(0.4),
                             fontWeight: FontWeight.w300),
                       )
                     ],
@@ -51,11 +53,75 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             Expanded(
               child: Container(
+                padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(35),
-                        topLeft: Radius.circular(35))),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(38),
+                    topLeft: Radius.circular(38),
+                  ),
+                ),
+                child: Column(
+                  children: [
+                    SizedBox(height: 20),
+                    TextFormField(
+                      style: AppTextStyle.style(
+                        color: Colors.black.withOpacity(0.8),
+                      ),
+                      decoration: InputDecoration(
+                        hintText: 'Hipporasy@gmail.com',
+                        labelText: 'Mobile Number/Email',
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Colors.black.withOpacity(0.8)),
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Colors.black.withOpacity(0.8)),
+                        ),
+                        border: UnderlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Colors.black.withOpacity(0.8)),
+                        ),
+                        labelStyle: AppTextStyle.style(
+                          color: Colors.black.withOpacity(0.8),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    TextFormField(
+                      obscureText: true,
+                      style: AppTextStyle.style(
+                        color: Colors.black.withOpacity(0.8),
+                      ),
+                      decoration: InputDecoration(
+                        suffixIcon: Padding(
+                          padding: EdgeInsets.all(15),
+                          child: Icon(
+                            Icons.remove_red_eye,
+                            color: Colors.black.withOpacity(0.8),
+                          ),
+                        ),
+                        labelText: 'Password',
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Colors.black.withOpacity(0.8)),
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Colors.black.withOpacity(0.8)),
+                        ),
+                        border: UnderlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Colors.black.withOpacity(0.8)),
+                        ),
+                        labelStyle: AppTextStyle.style(
+                          color: Colors.black.withOpacity(0.8),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
             )
           ],
