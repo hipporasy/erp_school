@@ -9,7 +9,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  bool _isSecure = false;
+  bool _isSecure = true;
 
   @override
   Widget build(BuildContext context) {
@@ -90,16 +90,25 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     SizedBox(height: 20),
                     TextFormField(
-                      obscureText: true,
+                      obscureText: _isSecure,
                       style: AppTextStyle.style(
                         color: Colors.black.withOpacity(0.8),
                       ),
                       decoration: InputDecoration(
                         suffixIcon: Padding(
                           padding: EdgeInsets.all(15),
-                          child: Icon(
-                            Icons.remove_red_eye,
-                            color: Colors.black.withOpacity(0.8),
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                _isSecure = !_isSecure;
+                              });
+                            },
+                            child: Icon(
+                              Icons.remove_red_eye,
+                              color: _isSecure
+                                  ? Colors.black.withOpacity(0.8)
+                                  : Colors.black.withOpacity(0.4),
+                            ),
                           ),
                         ),
                         labelText: 'Password',
@@ -119,6 +128,65 @@ class _LoginScreenState extends State<LoginScreen> {
                           color: Colors.black.withOpacity(0.8),
                         ),
                       ),
+                    ),
+                    SizedBox(height: 32),
+                    Container(
+                      height: 56,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [
+                            AppColor.primary,
+                            AppColor.primary.withOpacity(0.7)
+                          ],
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: Offset(5, 5),
+                            blurRadius: 10,
+                          )
+                        ],
+                      ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Center(
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 32),
+                                child: Text(
+                                  'SIGN IN',
+                                  style: AppTextStyle.style(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 20),
+                            child: Icon(Icons.arrow_forward,
+                                color: Colors.white, size: 32),
+                          )
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        GestureDetector(
+                          onTap: () {},
+                          child: Text(
+                            'Forgot Password?',
+                            style: AppTextStyle.style(
+                              color: Colors.black.withOpacity(0.8),
+                            ),
+                          ),
+                        )
+                      ],
                     )
                   ],
                 ),
